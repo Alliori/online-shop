@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<ui:composition template="/templates/template.xhtml">
+	<ui:define name="content">
+		<div class="container">
+			<div class="container-fluid bg-1 text-center">
+
+				<h:form id="sellForm" prependId="false"
+					enctype="multipart/form-data">
+					<h:message for="sellForm" />
+					<h:panelGrid columns="2">
+						<h:column>
+							<h:panelGrid columns="2">
+								<f:facet name="header">
+									<h:outputText value="#{msg.sell}" />
+								</f:facet>
+
+								<h:outputLabel value="#{msg['item.title']}" />
+								<h:inputText id="title" value="#{sellController.item.title}" />
+
+								<h:outputLabel value="#{msg['item.price']}" />
+								<h:inputText id="price" value="#{sellController.item.price}" />
+								<h:outputLabel value="#{msg['item.desciption']}" />
+								<h:inputTextarea rows="6" id="description"
+									value="#{sellController.item.description}" />
+								<h:outputLabel value="#{msg['item.foto']}" />
+								<h:inputFile id="part" value="#{sellController.part}" />
+
+								
+								<h:commandButton value="#{msg.cancel}" action="index" />
+								<h:commandButton id="sell"
+									action="#{sellController.persist(signInController)}"
+									value="#{msg.sell}" />
+							</h:panelGrid>
+						</h:column>
+						<h:column>
+							<h:graphicImage rendered="#{not empty sellController.item.id}"
+								url="image?id=#{sellController.item.id}" />
+						</h:column>
+					</h:panelGrid>
+
+
+
+				</h:form>
+
+			</div>
+		</div>
+	</ui:define>
+
+</ui:composition>
+</html>

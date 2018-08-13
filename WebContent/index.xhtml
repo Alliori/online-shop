@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<ui:composition template="/templates/template.xhtml">
+	<ui:define name="content">
+		<div class="container">
+			<div class="container-fluid bg-1 text-center">
+				<h:form>
+					<h:outputText rendered="#{empty searchController.items}"
+						value="#{msg.intro}" />
+					<h:dataTable value="#{searchController.items}" var="item">
+						<h:column>
+
+							<h:panelGrid columns="2">
+								<h:outputText value="#{msg['item.title']}:" />
+								<h:outputText value="#{item.title}" />
+								<h:outputText value="#{msg['item.desciption']}:" />
+								<h:outputText value="#{item.description}" />
+								<h:outputText value="#{msg['item.price']}:" />
+								<h:outputText value="#{item.price}" />
+								<h:outputText rendered="#{not empty item.sold}"
+									value="#{msg['item.sold']}" />
+								<h:outputText rendered="#{not empty item.sold}"
+									value="#{item.sold}" />
+								<h:commandButton
+									rendered="#{not empty signInController.customer.email}"
+									disabled="#{not empty item.sold or signInController.customer.id==item.seller.id}"
+									action="#{buyController.update(item.id)}" value="#{msg.buy}" />
+							</h:panelGrid>
+
+						</h:column>
+						<h:column>
+							<div style="padding-left: 50px">
+								<h:graphicImage url="image?id=#{item.id}" />
+							</div>
+						</h:column>
+					</h:dataTable>
+				</h:form>
+			</div>
+		</div>
+	</ui:define>
+</ui:composition>
+</html>

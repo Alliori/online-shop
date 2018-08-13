@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<ui:composition template="/templates/template.xhtml">
+	<ui:define name="content">
+		<div class="container">
+			<div class="container-fluid bg-1 text-center">
+
+				<h:form id="registerForm" prependId="false">
+					<h:message for="registerForm" />
+
+					<h:panelGrid columns="3" style="margin: 0 auto;">
+
+						<f:facet name="header">
+							<h:outputText value="#{msg.register}" />
+						</f:facet>
+
+						<h:outputLabel value="#{msg.email}" />
+						<h:inputText id="email"
+							value="#{registerController.customer.email}" />
+						<h:message for="email" />
+
+						<h:outputLabel value="#{msg.password}" />
+						<h:inputSecret id="password"
+							value="#{registerController.customer.password}" />
+						<h:message for="password" />
+						<h:commandButton value="#{msg.cancel}" action="index" />
+						<h:commandButton id="register" value="#{msg.register}"
+							action="#{registerController.persist()}" />
+
+						<h:message for="register" />
+
+					</h:panelGrid>
+
+				</h:form>
+
+			</div>
+		</div>
+
+
+	</ui:define>
+
+</ui:composition>
+</html>

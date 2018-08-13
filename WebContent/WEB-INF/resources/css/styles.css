@@ -1,0 +1,32 @@
+.container-fluid {
+    padding-top: 70px;
+    padding-bottom: 70px;
+}
+
+.container{
+	min-height: 600px;
+}
+
+* {
+	font-family: sans-serif;
+	padding: 2px;
+}
+
+
+a {
+	padding-left:30px;
+	color: white;
+	text-decoration: none;
+}
+a:hover {
+	text-shadow: 0 0 10px;
+	text-decoration: none;
+}
+
+input {
+	width: 200px;
+}
+td{
+	text-align:left;
+	min-width:100px;
+}
