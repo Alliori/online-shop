@@ -1,1 +1,1 @@
-# online-shop
+simple online-shop with Java EE and PostgreSQL
